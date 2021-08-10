@@ -49,3 +49,7 @@ input[type="radio"] + label {
   border-bottom: 1px solid #ddd;
   padding: 1rem;
 }
+
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
