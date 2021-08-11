@@ -50,6 +50,6 @@ input[type="radio"] + label {
   padding: 1rem;
 }
 
-[data-toggle="collapse"] {
+[data-toggle] {
   cursor: pointer;
 }
