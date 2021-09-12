@@ -1,0 +1,85 @@
+$lite-gray:#ddd;
+$background-dark: #512da8;
+$background-light: #9575cd;
+$background-pale: #d1c4e9;
+
+
+// Height variables
+
+$carousel-item-height: 300px;
+
+
+@mixin zero-margin($pad-up-dn,$pad-left-right){
+  margin: 0 auto;
+  padding: $pad-up-dn $pad-left-right;
+}
+
+
+
+body {
+  padding: 50px 0 0 0;
+  z-index: 0;
+}
+
+.navbar-dark {
+  background-color: $background-dark;
+}
+
+.row-header{
+  @include zero-margin(0,0);
+}
+
+
+.row-content {
+  @include zero-margin(50px,0);
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+
+.footer {
+  background-color: $background-pale;
+  @include zero-margin(20px,0);
+}
+
+.jumbotron {
+  @include zero-margin(70px,30px);
+  background: $background-light;
+  color: floralwhite;
+}
+
+.address {
+  font-size: 80%;
+  margin: 0;
+  color: #0f0f0f;
+}
+
+input[type="radio"] + label {
+  margin-right: 0.7rem;
+}
+
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+}
+
+.carousel{
+  background: $background-dark;
+
+  .carousel-item{
+    height: $carousel-item-height;
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: $carousel-item-height;
+    }
+  }
+}
+
+#carousel_btn{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
