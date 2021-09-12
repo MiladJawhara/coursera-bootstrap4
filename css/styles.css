@@ -54,3 +54,15 @@ input[type="radio"] + label {
   position: absolute;
   right: 0;
   bottom: 0; }
+
+.pointer {
+  cursor: pointer !important; }
+
+.modal .modal-header {
+  background: #512da8;
+  color: floralwhite; }
+  .modal .modal-header .close {
+    color: floralwhite; }
+
+.modal .modal-body {
+  background: #d1c4e9; }

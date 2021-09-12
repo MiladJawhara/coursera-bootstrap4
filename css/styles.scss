@@ -3,6 +3,7 @@ $background-dark: #512da8;
 $background-light: #9575cd;
 $background-pale: #d1c4e9;
 
+$font-color-floralwhite: floralwhite;
 
 // Height variables
 
@@ -82,4 +83,21 @@ input[type="radio"] + label {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.pointer{
+  cursor: pointer !important;
+}
+
+.modal{
+  .modal-header{
+    background: $background-dark;
+    color: $font-color-floralwhite;
+    .close{
+      color: $font-color-floralwhite;
+    }
+  }
+  .modal-body{
+    background: $background-pale;
+  }
 }

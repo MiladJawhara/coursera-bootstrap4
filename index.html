@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" href="css/styles-old.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Ristorante Con Fusion</title>
 </head>
 
@@ -45,15 +45,15 @@
                     </a>
                 </li>
             </ul>
-            <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+            <span class="navbar-text ">
+                    <a id="login_btn" class="pointer" >
                         <span class="fa fa-sign-in"></span> Login
                     </a>
-                </span>
+            </span>
         </div>
     </div>
 </nav>
-<div id="loginModal" class="modal fade" role="dialog">
+<div id="login_modal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -92,7 +92,7 @@
         </div>
     </div>
 </div>
-<div id="reservationModal" class="modal fade" role="dialog">
+<div id="reservation_modal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -176,8 +176,8 @@
                 <img src="img/logo.png" class="img-fluid">
             </div>
             <div class="col-12 col-md">
-                <a class="btn btn-warning px-5" style="font-size: large; font-weight: 500;" data-toggle="modal"
-                   href="#" data-target="#reservationModal">
+                <a id="reserve_table_btn" class="btn btn-warning px-5" style="font-size: large; font-weight: 500;"
+                   href="#">
                     Reserve Table
                 </a>
             </div>
@@ -359,54 +359,7 @@
 <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(() => {
-        const myCarousel = $('#myCarousel');
-
-        myCarousel.carousel({interval: 2000});
-
-        const carouselStates = {
-            pause: 'pause',
-            cycle: 'cycle'
-        };
-
-        myCarousel.data('prevState', carouselStates.cycle);
-
-        const carouselBtn = $('#carousel_btn');
-        const btnIcon = carouselBtn.children('span');
-
-
-        const pauseCarousel = () => {
-            myCarousel.carousel(carouselStates.pause);
-            btnIcon.removeClass('fa-pause');
-            carouselBtn.removeClass('btn-danger');
-            carouselBtn.addClass('btn-success');
-            btnIcon.addClass('fa-play');
-            myCarousel.data('prevState', carouselStates.pause);
-        }
-        const cycleCarousel = () => {
-            myCarousel.carousel(carouselStates.cycle);
-            btnIcon.removeClass('fa-play');
-            carouselBtn.removeClass('btn-success');
-            carouselBtn.addClass('btn-danger');
-            btnIcon.addClass('fa-pause');
-            myCarousel.data('prevState', carouselStates.cycle);
-        }
-
-        carouselBtn.click(() => {
-            const prevState = myCarousel.data('prev-state');
-
-            switch (prevState) {
-                case carouselStates.cycle:
-                    pauseCarousel();
-                    break;
-                default:
-                    cycleCarousel();
-            }
-        });
-
-    })
-</script>
+<script src="js/scripts.js"></script>
 </body>
 
 </html>
