@@ -107,7 +107,7 @@
                             <input id="guest_1" type="radio" name="guest_num"/>
                             <label for="guest_1" style="font-weight: 700; font-size:large;">1</label>
 
-                            <input id="guest_2" type="radio" name="guest_num"/>
+                            <input id="guest_2" checked type="radio" name="guest_num"/>
                             <label for="guest_2" style="font-weight: 700; font-size:large;">2</label>
 
                             <input id="guest_3" type="radio" name="guest_num"/>
@@ -130,11 +130,13 @@
                         <div class="col-12 col-md-auto">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-success active">
-                                    <input type="radio" name="options" id="nonSmokingSection" autocomplete="off"
+                                    <input type="radio" name="section" value="non_smoking" id="nonSmokingSection"
+                                           autocomplete="off"
                                            checked> Non-Smoking
                                 </label>
                                 <label class="btn btn-danger">
-                                    <input type="radio" name="options" id="smokingSection" autocomplete="off"> Smoking
+                                    <input type="radio" name="section" value="smoking" id="smokingSection"
+                                           autocomplete="off"> Smoking
                                 </label>
                             </div>
                         </div>
@@ -235,14 +237,11 @@
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
-                <div id="carouselButtons" class="btn-group">
-                    <button class="btn btn-danger btn-sm" id="carousel_pause">
-                        <span class="fa fa-pause"></span>
-                    </button>
-                    <button class="btn btn-success btn-sm" id="carousel_play">
-                        <span class="fa fa-play"></span>
-                    </button>
-                </div>
+
+                <button class="btn btn-danger btn-sm" id="carousel_btn">
+                    <span class="fa fa-pause"></span>
+                </button>
+
             </div>
         </div>
     </div>
@@ -366,11 +365,44 @@
 
         myCarousel.carousel({interval: 2000});
 
-        $('#carousel_pause').click(()=>{
-            myCarousel.carousel('pause');
-        });
-        $('#carousel_play').click(()=>{
-            myCarousel.carousel('cycle');
+        const carouselStates = {
+            pause: 'pause',
+            cycle: 'cycle'
+        };
+
+        myCarousel.data('prevState', carouselStates.cycle);
+
+        const carouselBtn = $('#carousel_btn');
+        const btnIcon = carouselBtn.children('span');
+
+
+        const pauseCarousel = () => {
+            myCarousel.carousel(carouselStates.pause);
+            btnIcon.removeClass('fa-pause');
+            carouselBtn.removeClass('btn-danger');
+            carouselBtn.addClass('btn-success');
+            btnIcon.addClass('fa-play');
+            myCarousel.data('prevState', carouselStates.pause);
+        }
+        const cycleCarousel = () => {
+            myCarousel.carousel(carouselStates.cycle);
+            btnIcon.removeClass('fa-play');
+            carouselBtn.removeClass('btn-success');
+            carouselBtn.addClass('btn-danger');
+            btnIcon.addClass('fa-pause');
+            myCarousel.data('prevState', carouselStates.cycle);
+        }
+
+        carouselBtn.click(() => {
+            const prevState = myCarousel.data('prev-state');
+
+            switch (prevState) {
+                case carouselStates.cycle:
+                    pauseCarousel();
+                    break;
+                default:
+                    cycleCarousel();
+            }
         });
 
     })
